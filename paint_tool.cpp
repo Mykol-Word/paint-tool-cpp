@@ -1,24 +1,30 @@
 #include <iostream>
-using namespace std;
+#include "tools.h"
+#include "coordinate.h"
+#include "color.h"
+#include "canvas.h"
 
-//Dimensions
-const int SCREEN_WIDTH = 256;
-const int SCREEN_HEIGHT = 256;
+using namespace std;
 
 int main() 
 {
-    // P3: ASCII .ppm, SCREEN_WIDTH x SCREEN_HEIGHT, 255 max
-    cout << "P3\n" << SCREEN_WIDTH << ' ' << SCREEN_HEIGHT << "\n255\n";
+    Canvas canvas;
+    draw_line(canvas, Coordinate(0,0), Coordinate(255,255), Color(0,0,0));
+    draw_line(canvas, Coordinate(20,40), Coordinate(255,200), Color(56,23,180));
+    draw_line(canvas, Coordinate(255,0), Coordinate(0,255), Color(100,0,0));
 
-    for(int h = 0; h < SCREEN_HEIGHT; h++)
+    // P3: ASCII .ppm, CANVAS_WIDTH x CANVAS_HEIGHT, 255 max
+    cout << "P3\n" << CANVAS_WIDTH << ' ' << CANVAS_HEIGHT << "\n255\n";
+
+    for(int h = CANVAS_HEIGHT - 1; h >= 0; h--)
     {
         //Progress
-        clog << "\rLines Remaining: " << SCREEN_HEIGHT - h << ' ' << flush;
+        clog << "\rLines Remaining: " << h << ' ' << flush;
 
-        //Output Gradient
-        for(int w = 0; w < SCREEN_WIDTH; w++)
+        //Output
+        for(int w = 0; w < CANVAS_WIDTH; w++)
         {
-            cout << h << ' ' << w << ' ' << h << ' ' << endl;
+            cout << canvas.get_color(Coordinate(w,h)).r << ' ' << canvas.get_color(Coordinate(w,h)).g << ' ' << canvas.get_color(Coordinate(w,h)).b << ' ' << endl;
         }
     }
 
