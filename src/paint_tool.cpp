@@ -9,9 +9,9 @@ using namespace std;
 int main() 
 {
     Canvas canvas;
-    draw_line(canvas, Coordinate(0,0), Coordinate(255,255), Color(0,0,0));
-    draw_line(canvas, Coordinate(20,40), Coordinate(255,200), Color(56,23,180));
-    draw_line(canvas, Coordinate(255,0), Coordinate(0,255), Color(100,0,0));
+    draw_line(canvas, Coordinate(0,0), Coordinate(255,255), Color(0,0,0), 3);
+    draw_line(canvas, Coordinate(20,40), Coordinate(255,200), Color(56,23,180), 5);
+    draw_line(canvas, Coordinate(255,0), Coordinate(0,255), Color(100,0,0), 1);
 
     // P3: ASCII .ppm, CANVAS_WIDTH x CANVAS_HEIGHT, 255 max
     cout << "P3\n" << CANVAS_WIDTH << ' ' << CANVAS_HEIGHT << "\n255\n";
